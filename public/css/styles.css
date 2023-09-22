@@ -4,9 +4,4 @@
 *:after {
   box-sizing: border-box;
 }
-.top-header{
- display: flex;
-}
-.siteName{
-  color: aqua;
-}
+
