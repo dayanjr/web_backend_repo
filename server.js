@@ -7,7 +7,6 @@
  *************************/
 const expressLayouts = require("express-ejs-layouts")
 const express = require("express")
-
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
@@ -32,10 +31,13 @@ app.get("/", function(req, res){
  *************************/
 const port = process.env.PORT
 const host = process.env.HOST
-
 /* ***********************
  * Log statement to confirm server operation
  *************************/
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+/* ******************************************
+ * Default GET route
+ * ***************************************** */
+app.get("/", (req, res) => {res.send("Welcome home!")})
