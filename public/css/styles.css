@@ -4,6 +4,71 @@
 *:after {
   box-sizing: border-box;
 }
+body{
+ background-image: url(/images/site/checkerboard.jpg);
+}
+#wrapper{
+  background-color: #fdfdfd;
+}
+main{
+  margin: 20px;
+}
 #top-header{
- display: flex;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  font-size: 20px;
+}
+nav >ul{
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: black;
+  padding: 15px;
+  font-size: 20px;
+}
+footer{
+  padding: 15px;
+  font-size: 20px;
+}
+.box{
+  background: rgba(76, 175, 80, 0.3);
+  padding: 37px;
+  width: 166px;
+  margin: 20px;
+  margin-left: -20px;
+}
+.delorean-box{
+  display: flex;
+}
+.delorean{
+  width: 594px;
+  margin-right: -578px;
+  margin-left: 108px;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 115px;
+}
+.in-grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.in-grid-container>section>div>img{
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  margin-left: 68px;
+}
+.in-grid-container>section>div{
+  background-color: rgb(155, 155, 234);
+}
+.in-grid-container >section{
+  margin: 20px;
+}
+.in-grid-container>section >a{
+margin: 23px;
+margin-left: 62px;
 }
