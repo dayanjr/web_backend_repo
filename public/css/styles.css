@@ -1,101 +1,114 @@
 /******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-body{
- background-image: url(/images/site/checkerboard.jpg);
-}
-#wrapper{
-  background-color: #fdfdfd;
-}
-main{
-  margin: 20px;
-}
-#top-header{
-  display: flex;
-  justify-content: space-between;
-  padding: 24px;
-  font-size: 20px;
-}
-nav >ul{
-  margin: 15px;
-  display: flex;
-  justify-content: space-around;
-  color: white;
-  background-color: black;
-  padding: 15px;
-  font-size: 20px;
-  list-style-type: none;
-}
-footer{
-  padding: 15px;
-  font-size: 20px;
-}
-.box{
-  background: rgba(76, 125, 175, 0.3);
-  padding: 37px;
-  width: 166px;
-  margin: 20px;
-  margin-left: -20px;
-  color: rgb(121, 115, 8);
-}
-.box > button{
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 13px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 13px;
-}
-.delorean-box{
-  display: flex;
-  justify-content: center;
-}
-.delorean{
-  width: 594px;
-  margin-right: -630px;
-  margin-left: -290px;
-}
-.grid-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 115px;
-}
-.in-grid-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.in-grid-container>section>div>img{
-  width: 70px;
-  height: 70px;
-  margin: 10px;
-  margin-left: 68px;
-}
-.in-grid-container>section>div{
-  background-color: rgb(155, 155, 234);
-}
-.in-grid-container >section{
-  margin: 20px;
-}
-.in-grid-container>section >a{
-margin: 23px;
-margin-left: 62px;
-}
-.titles{
-  text-align: center;
-}
-.item-list{
-  font-size: 27px;
-  list-style-type: none;
-}
-.top-links {
-  text-decoration: none;
-  color: black;
-}
-.siteName{
-  font-size: 50px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Rock+Salt&display=swap');
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  h1{
+    font-family: sans-serif;
+  }
+  body{
+    font-family: 'roboto',sans-serif;
+   background-image: url(/images/site/checkerboard.jpg);
+  }
+  #wrapper{
+    background-color: #fdfdfd;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(29, 64, 220);
+    width: 900px;
+    margin: auto;
+  }
+  main{
+    margin: 20px;
+  }
+  #top-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    font-size: 20px;
+  }
+  nav >ul{
+    margin: 15px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    background-color: black;
+    padding: 15px;
+    font-size: 20px;
+    list-style-type: none;
+  }
+  footer{
+    padding: 15px;
+    font-size: 20px;
+  }
+  .box{
+    background: rgba(27, 48, 70, 0.3);
+    padding: 37px;
+    width: 166px;
+    margin: 20px;
+    margin-left: -20px;
+    color: rgb(255, 242, 0);
+  }
+  .box > button{
+    background-color: #132e14; /* Green */
+    border: none;
+    color: white;
+    padding: 13px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+  }
+  .delorean-box{
+    display: flex;
+    justify-content: center;
+  }
+  .delorean{
+    width: 594px;
+    margin-right: -630px;
+    margin-left: -290px;
+  }
+  .grid-container{
+    display: grid;
+    grid-template-columns: 300px 300px;
+    justify-content: space-between;
+  }
+  .in-grid-container{
+    display: grid;
+    grid-template-columns: 225px 225px;
+  }
+  .in-grid-container>section>div>img{
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    margin-left: 68px;
+  }
+  .in-grid-container>section>div{
+    background-color: rgb(155, 155, 234);
+  }
+  .in-grid-container >section{
+    margin: 20px;
+  }
+  .in-grid-container>section >a{
+  margin: 23px;
+  margin-left: 62px;
+  }
+  .titles{
+    text-align: center;
+  }
+  .item-list{
+    font-size: 21px;
+  }
+  .item-list>li{
+    margin: 18px;
+  }
+  .top-links {
+    text-decoration: none;
+    color: black;
+  }
+  .siteName{
+    font-size: 50px;
+  }
+
