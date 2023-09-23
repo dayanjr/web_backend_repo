@@ -27,25 +27,38 @@ nav >ul{
   background-color: black;
   padding: 15px;
   font-size: 20px;
+  list-style-type: none;
 }
 footer{
   padding: 15px;
   font-size: 20px;
 }
 .box{
-  background: rgba(76, 175, 80, 0.3);
+  background: rgba(76, 125, 175, 0.3);
   padding: 37px;
   width: 166px;
   margin: 20px;
   margin-left: -20px;
+  color: rgb(121, 115, 8);
+}
+.box > button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 13px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
 }
 .delorean-box{
   display: flex;
+  justify-content: center;
 }
 .delorean{
   width: 594px;
-  margin-right: -578px;
-  margin-left: 108px;
+  margin-right: -630px;
+  margin-left: -290px;
 }
 .grid-container{
   display: grid;
@@ -71,4 +84,18 @@ footer{
 .in-grid-container>section >a{
 margin: 23px;
 margin-left: 62px;
+}
+.titles{
+  text-align: center;
+}
+.item-list{
+  font-size: 27px;
+  list-style-type: none;
+}
+.top-links {
+  text-decoration: none;
+  color: black;
+}
+.siteName{
+  font-size: 50px;
 }
