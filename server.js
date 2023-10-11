@@ -5,6 +5,7 @@
 /* ***********************
  * Require Statements
  *************************/
+const inventoryRoute = require("../web_backend_repo/routes/inventoryRoute.js")
 const expressLayouts = require("express-ejs-layouts")
 const express = require("express")
 const env = require("dotenv").config()
@@ -25,6 +26,8 @@ app.use(static)
 //app.get("/", function(req, res){
 //  res.render("index", {title: "Home"})
 //})
+// Inventory routes
+app.use("/inv", inventoryRoute)
 app.get("/", baseController.buildHome)
 
 /* ***********************
