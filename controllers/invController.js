@@ -23,7 +23,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
   const grid = await utilities.buildDetailGrid(data)
   const inv_make = data[0].inv_make;
   const inv_model = data[0].inv_model;
-  //let nav = await utilities.getNav()
+  let nav = await utilities.getNav()
   res.render("./inventory/classification", {
     title: inv_make + ' ' + inv_model,
     nav,
