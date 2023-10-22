@@ -1,0 +1,18 @@
+@media only screen and (max-width: 700px) {
+   nav{
+    width: 674px;
+   }
+   #inv-display{
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: 265px 265px;
+    gap: 44px;
+    padding: 2px;
+  }
+  #displayer{
+    grid-column: span 2;
+    gap: 30px;
+    padding: 10px;
+
+  }
+  }

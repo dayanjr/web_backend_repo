@@ -77,10 +77,10 @@ Util.buildDetailGrid = async function(data){
      </a>
        <div>
         <h1><strong>${inv_make} ${inv_model} details</strong></h1>
-        <h1><strong>Price:</strong> $${inv_price}</h1>
+        <h1><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(inv_price)}</h1>
         <h1><strong>Description:</strong> ${inv_description}</h1> 
         <h1><strong>Color:</strong> ${inv_color}</h1>
-        <h1><strong>Miles:</strong> ${inv_miles}</h1>
+        <h1><strong>Miles:</strong> ${new Intl.NumberFormat('en-US').format(inv_miles)}</h1>
    </div>
    </li>
  `;

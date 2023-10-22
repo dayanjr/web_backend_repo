@@ -1,7 +1,9 @@
-
 @media only screen and (max-width: 480px) {
     body{
         background-image: none;
+       }
+       nav{
+        width: 342px;
        }
        #inv-display{
         grid-template-columns: 265px;
