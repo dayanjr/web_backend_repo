@@ -66,14 +66,21 @@ Util.buildDetailGrid = async function(data){
     inv_model,
     inv_thumbnail,
     inv_price,
+    inv_description,
+    inv_color,
+    inv_miles,
    } = vehicle;
    return`
-   <li>
+   <li id="displayer">
      <a href="../../inv/detail/${inv_id}" title="View ${inv_make} ${inv_model} details">
        <img src="${inv_thumbnail}" alt="Image of ${inv_make} ${inv_model} on CSE Motors" />
      </a>
        <div>
-        <p>${inv_make} ${inv_model}</p>
+        <h1><strong>${inv_make} ${inv_model} details</strong></h1>
+        <h1><strong>Price:</strong> $${inv_price}</h1>
+        <h1><strong>Description:</strong> ${inv_description}</h1> 
+        <h1><strong>Color:</strong> ${inv_color}</h1>
+        <h1><strong>Miles:</strong> ${inv_miles}</h1>
    </div>
    </li>
  `;

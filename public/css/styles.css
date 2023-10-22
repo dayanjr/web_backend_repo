@@ -12,6 +12,22 @@
     font-family: 'roboto',sans-serif;
    background-image: url(/images/site/checkerboard.jpg);
   }
+  #displayer{
+    display: flex;
+    gap: 60px;
+    padding: 20px;
+  }
+  #displayer> div{
+    font-size: 10px;
+  }
+  #displayer> div > h1{
+    font-size: 19px;
+    font-weight: lighter;
+  }
+  #displayer > a >img{
+    width: 448px;
+    height: 302px;
+  }
   #wrapper{
     background-color: #fdfdfd;
     border-radius: 20px;

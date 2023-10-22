@@ -66,4 +66,11 @@
         font-size: 14px;
         list-style-type: none;
     }
+    #displayer{
+      flex-direction: column;
+    }
+    #displayer > a >img{
+      width: 184px;
+      height: 121px;
+    }
   }
