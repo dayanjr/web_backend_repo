@@ -1,13 +1,17 @@
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
     body{
         background-image: none;
+       }
+       #inv-display{
+        grid-template-columns: 265px;
        }
        #wrapper{
         border-style: none;
         width: 300px;
         margin: 0;
       }
+      
       .in-grid-container>section >a {
         margin: 26px;
         font-size: 9px;
@@ -68,9 +72,14 @@
     }
     #displayer{
       flex-direction: column;
+      grid-column: span 1;
     }
-    #displayer > a >img{
-      width: 184px;
-      height: 121px;
+    #inv-display >li>a> .list-img{
+      width: 199px;
+      height: 123px;
+    }
+    #displayer > a >.detail-img{
+      width: 200px;
+      height: 122px;
     }
   }

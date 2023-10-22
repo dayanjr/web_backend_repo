@@ -33,9 +33,9 @@ Util.buildClassificationGrid = async function(data){
   }
 
   const gridItems = data.map(vehicle => `
-    <li>
+  <li>
       <a href="../../inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
-        <img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />
+        <img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" class="list-img"/>
       </a>
       <div class="namePrice">
         <hr />
@@ -73,7 +73,7 @@ Util.buildDetailGrid = async function(data){
    return`
    <li id="displayer">
      <a href="../../inv/detail/${inv_id}" title="View ${inv_make} ${inv_model} details">
-       <img src="${inv_thumbnail}" alt="Image of ${inv_make} ${inv_model} on CSE Motors" />
+       <img src="${inv_thumbnail}" alt="Image of ${inv_make} ${inv_model} on CSE Motors" class="detail-img"/>
      </a>
        <div>
         <h1><strong>${inv_make} ${inv_model} details</strong></h1>
