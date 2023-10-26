@@ -64,7 +64,8 @@
         padding: 30px;
       }
       nav >ul {
-        margin: 15px;
+        margin-left: 16px;
+        margin-right: 5px;
         display: flex;
         justify-content: space-around;
         color: white;
