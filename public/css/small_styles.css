@@ -3,7 +3,8 @@
         background-image: none;
        }
        nav{
-        width: 342px;
+        width: 338px;
+        margin-left: -25px;
        }
        #inv-display{
         grid-template-columns: 265px;
