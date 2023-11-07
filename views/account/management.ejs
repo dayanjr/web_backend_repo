@@ -1,15 +1,11 @@
 <% if (title) { %>
     <h1><%= title %></h1>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-  
-        <label for="password">PassWord:</label>
-        <input type="password" name="password" id="password" required>
-  
-        <button type="submit">Log In</button>
-      </form>
-      <a class="top-links" title="Click to log in" href="/account/register">register</a>
+    <div id="tools">
+      <a class="top-links" title="Click to log in" href="/inv/newclass">add new classification</a>
+    </div>
+    <div id="tools">
+      <a class="top-links" title="Click to log in" href="/inv/newinv">add new inventory</a>
+    </div>
     <% } else {
         res.redirect('/')
     } %>

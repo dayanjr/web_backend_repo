@@ -30,10 +30,24 @@ invCont.buildByInventoryId = async function (req, res, next) {
     grid,
   })
 }
-invCont.buildLogin = async function (req, res, next){
+invCont.buildManagement = async function (req, res, next){
   let nav = await utilities.getNav()
   res.render("./account/management", {
-      title: "Login",
+      title: "Management",
+      nav,
+  })
+}
+invCont.buildNewClass = async function (req, res, next){
+  let nav = await utilities.getNav()
+  res.render("./account/newclass", {
+      title: "Management1",
+      nav,
+  })
+}
+invCont.buildNewInv = async function (req, res, next){
+  let nav = await utilities.getNav()
+  res.render("./account/newinv", {
+      title: "Management2",
       nav,
   })
 }
