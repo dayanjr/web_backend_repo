@@ -15,12 +15,16 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const Util = require("./utilities")
+const bodyParser = require("body-parser")
+//const cookieParser = require("cookie-parser")
 /* ***********************
  *View Engine and Templates
  *************************/
  /* ***********************
  * Middleware
  * ************************/
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
  app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
@@ -40,7 +44,8 @@ app.use(function(req, res, next){
  app.set("view engine", "ejs")
  app.use(expressLayouts)
  app.set("layout", "./layouts/layout") // not at views root
-/* ***********************
+
+ /* ***********************
  * Routes
  *************************/
 app.use(static);
@@ -51,6 +56,8 @@ app.use(static);
 // Inventory routes
 app.get("/", Util.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
+//Account routes - Unity 4, activity
+app.use("/account", require("./routes/accountRoute"))
 //app.use("../inv/detail", inventoryRoute);
 // File Not Found Route - must be last route in list
 app.get("/500", Util.handleErrors(baseController.build500));

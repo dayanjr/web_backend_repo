@@ -51,6 +51,33 @@ Util.buildClassificationGrid = async function(data){
 
   return `<ul id="inv-display">${gridItems.join('')}</ul>`;
 };
+Util.buildLogin = async function() {
+  return `
+    <form id="classification-form">
+      <label for="make">Make:</label>
+      <select name="make" id="make">
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+        <option value="Ford">Ford</option>
+        <!-- Add more make options as needed -->
+      </select>
+      
+      <label for="model">Model:</label>
+      <select name="model" id="model">
+        <option value="Corolla">Corolla</option>
+        <option value="Civic">Civic</option>
+        <option value="Focus">Focus</option>
+        <!-- Add more model options as needed -->
+      </select>
+      
+      <label for="price-range">Price Range:</label>
+      <input type="range" name="price-range" id="price-range" min="0" max="50000" step="1000">
+      
+      <button type="submit">Search</button>
+    </form>
+  `;
+};
+
 /* **************************************
 * Build the detail view HTML
 * ************************************ */
