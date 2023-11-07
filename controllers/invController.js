@@ -30,4 +30,12 @@ invCont.buildByInventoryId = async function (req, res, next) {
     grid,
   })
 }
+invCont.buildLogin = async function (req, res, next){
+  let nav = await utilities.getNav()
+  res.render("./account/management", {
+      title: "Login",
+      nav,
+  })
+}
+
 module.exports = invCont
