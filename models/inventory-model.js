@@ -36,4 +36,12 @@ async function getInventoryByInv_Id(inv_id) {
     console.error("getclassificationsbyid error " + error)
   }
 }
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id};
+async function registerNewClass(classification_name){
+      try{
+          const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
+          return await pool.query(sql, [classification_name])
+      } catch (error){
+          return error.message
+      }
+  }
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id, registerNewClass};

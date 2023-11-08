@@ -1,11 +1,21 @@
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <div id="tools">
-      <a class="top-links" title="Click to log in" href="/inv/newclass">1add new classification</a>
+  <h1><%= title %></h1>
+  <%- messages() %>
+  <% if (errors) {%>
+  <ul class="notice">
+    <% errors.array().forEach(error => {%>
+    <li><%= error.msg %></li>
+  <% }) %>
+  </ul>
+  <% } %>
+    <div id="registerContainer">
+      <p>All fields are required.</p>
+      <form id="resgisterForm" action="/inv/newclass" method="post">
+          <label for="account_firstname">First Name:</label>
+          <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>">
+          <button type="submit">Register</button> 
+      </form>
     </div>
-    <div id="tools">
-      <a class="top-links" title="Click to log in" href="/inv/newinv">1add new inventory</a>
-    </div>
-    <% } else {
-        res.redirect('/')
-    } %>
+  <% } else {
+      res.redirect('/')
+  } %>

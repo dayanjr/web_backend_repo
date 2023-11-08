@@ -40,15 +40,43 @@ invCont.buildManagement = async function (req, res, next){
 invCont.buildNewClass = async function (req, res, next){
   let nav = await utilities.getNav()
   res.render("./account/newclass", {
-      title: "Management1",
+      title: "newclass",
       nav,
+      errors: null,
   })
+}
+ invCont.registerNewClass = async function(req, res){
+  let nav = await utilities.getNav()
+  const{
+    classification_name,
+  } = req.body
+  const reqResult = await invModel.registerNewClass(
+    classification_name,
+  )
+  if (reqResult){
+      req.flash(
+          "notice",
+          `Congratilations, you\'re registered ${classification_name}. Please log in.`
+      )
+      res.status(201).render("./account/management", {
+          title: "newclass",
+          nav,
+      })
+  } else{
+      req.flash("notice", "Sorry, the registration failed.")
+      res.status(501).render("./account/newclass", {
+          title: "newclass",
+          nav,
+          errors: null,
+      })
+  }
 }
 invCont.buildNewInv = async function (req, res, next){
   let nav = await utilities.getNav()
   res.render("./account/newinv", {
-      title: "Management2",
+      title: "newinv",
       nav,
+      errors: null,
   })
 }
 
