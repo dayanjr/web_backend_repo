@@ -8,6 +8,7 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInventoryId));
 router.get("/", utilities.handleErrors(invController.buildManagement));
 router.get("/newinv", utilities.handleErrors(invController.buildNewInv))
+router.post("/newinv", utilities.handleErrors(invController.registerNewInv))
 router.get("/newclass", utilities.handleErrors(invController.buildNewClass))
 router.post("/newclass", utilities.handleErrors(invController.registerNewClass))
 module.exports = router;

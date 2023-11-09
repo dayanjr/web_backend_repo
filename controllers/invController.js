@@ -59,7 +59,7 @@ invCont.buildNewClass = async function (req, res, next){
           `Congratilations, you\'re registered ${classification_name}. Please log in.`
       )
       res.status(201).render("./account/management", {
-          title: "newclass",
+          title: "Management",
           nav,
       })
   } else{
@@ -67,6 +67,52 @@ invCont.buildNewClass = async function (req, res, next){
       res.status(501).render("./account/newclass", {
           title: "newclass",
           nav,
+          errors: null,
+      })
+  }
+}
+ invCont.registerNewInv = async function(req, res){
+  const data = await invModel.getInventoryByClassificationId(classification_id)
+  const dropdown = await utilities.getDropdownForm(data)
+  let nav = await utilities.getNav()
+  const{
+    make,
+    model,
+    description,
+    image_path,
+    thumbnail_path,
+    price,
+    year,
+    miles,
+    color,
+  } = req.body
+  const reqResult = await invModel.registerNewInv(
+    make,
+    model,
+    description,
+    image_path,
+    thumbnail_path,
+    price,
+    year,
+    miles,
+    color,
+  )
+  if (reqResult){
+      req.flash(
+          "notice",
+          `Congratilations, you\'re registered new inventory. Please log in.`
+      )
+      res.status(201).render("./account/management", {
+          title: "Management",
+          nav,
+          dropdown,
+      })
+  } else{
+      req.flash("notice", "Sorry, the registration failed.")
+      res.status(501).render("./account/newclass", {
+          title: "newinv",
+          nav,
+          dropdown,
           errors: null,
       })
   }
