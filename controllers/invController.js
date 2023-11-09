@@ -72,30 +72,34 @@ invCont.buildNewClass = async function (req, res, next){
   }
 }
  invCont.registerNewInv = async function(req, res){
-  const data = await invModel.getInventoryByClassificationId(classification_id)
+  const classification = req.params.classificationId
+  const data = await invModel.getInventoryByClassificationId(classification)
   const dropdown = await utilities.getDropdownForm(data)
   let nav = await utilities.getNav()
   const{
-    make,
-    model,
-    description,
-    image_path,
-    thumbnail_path,
-    price,
-    year,
-    miles,
-    color,
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+
   } = req.body
   const reqResult = await invModel.registerNewInv(
-    make,
-    model,
-    description,
-    image_path,
-    thumbnail_path,
-    price,
-    year,
-    miles,
-    color,
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
   )
   if (reqResult){
       req.flash(
@@ -105,11 +109,10 @@ invCont.buildNewClass = async function (req, res, next){
       res.status(201).render("./account/management", {
           title: "Management",
           nav,
-          dropdown,
       })
   } else{
       req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("./account/newclass", {
+      res.status(501).render("./account/newinv", {
           title: "newinv",
           nav,
           dropdown,
@@ -118,10 +121,14 @@ invCont.buildNewClass = async function (req, res, next){
   }
 }
 invCont.buildNewInv = async function (req, res, next){
+  const classification_id = req.params.classificationId
+  const data = await invModel.getInventoryByClassificationId(classification_id)
+  const dropdown = await utilities.getDropdownForm(data)
   let nav = await utilities.getNav()
   res.render("./account/newinv", {
       title: "newinv",
       nav,
+      dropdown,
       errors: null,
   })
 }

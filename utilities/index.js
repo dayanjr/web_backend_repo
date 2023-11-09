@@ -54,11 +54,10 @@ Util.buildClassificationGrid = async function(data){
 Util.getDropdownForm = async function (req, res, next) {
   let data = await invModel.getClassifications();
   console.log(data);
+// Change the form action and method accordingly
 
-  let dropdown = '<form action="/submitForm" method="post">'; // Change the form action and method accordingly
-
-  dropdown += '<label for="classification">Choose a classification:</label>';
-  dropdown += '<select id="classification" name="classification">';
+  let dropdown = '<label for="classification_id">Choose a classification:</label>';
+  dropdown += '<select id="classification_id" name="classification_id">';
 
   data.rows.forEach((row) => {
     dropdown +=
@@ -70,7 +69,6 @@ Util.getDropdownForm = async function (req, res, next) {
   });
 
   dropdown += '</select>';
-  dropdown += '</form>';
 
   return dropdown;
 };
