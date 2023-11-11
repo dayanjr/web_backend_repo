@@ -11,9 +11,17 @@
     <div id="registerContainer">
       <p>All fields are required.</p>
       <form id="resgisterForm" action="/inv/newclass" method="post">
-          <label for="classification_name">classification_name:</label>
-          <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>">
-          <button type="submit">Register</button> 
+        <div class="row">
+          <div class="col-25">
+            <label for="classification_name">classification_name:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>">
+          </div>
+        </div> 
+          <div class="row">
+            <input type="submit" value="Register">
+          </div>
       </form>
     </div>
   <% } else {
