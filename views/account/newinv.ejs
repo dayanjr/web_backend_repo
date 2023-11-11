@@ -11,7 +11,7 @@
     <div id="registerContainer">
       <p>All fields are required.</p>
       <form id="resgisterForm" action="/inv/newinv" method="post">
-          <%-dropdown %>
+          <%-classificationList %>
           <label for="inv_make">Make:</label>
           <input type="text" name="inv_make" id="inv_make" required value="<%= locals.inv_make%>">
           <label for="inv_model">Model:</label>

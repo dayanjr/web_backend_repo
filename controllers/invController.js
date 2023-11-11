@@ -72,9 +72,7 @@ invCont.buildNewClass = async function (req, res, next){
   }
 }
  invCont.registerNewInv = async function(req, res){
-  const classification = req.params.classificationId
-  const data = await invModel.getInventoryByClassificationId(classification)
-  const dropdown = await utilities.getDropdownForm(data)
+
   let nav = await utilities.getNav()
   const{
     classification_id,
@@ -86,7 +84,7 @@ invCont.buildNewClass = async function (req, res, next){
     inv_thumbnail,
     inv_price,
     inv_miles,
-    inv_color,
+    inv_color
 
   } = req.body
   const reqResult = await invModel.registerNewInv(
@@ -99,36 +97,35 @@ invCont.buildNewClass = async function (req, res, next){
     inv_thumbnail,
     inv_price,
     inv_miles,
-    inv_color,
+    inv_color
   )
   if (reqResult){
       req.flash(
           "notice",
-          `Congratilations, you\'re registered new inventory. Please log in.`
+          `Congratilations, you\'ve registered new inventory.`
       )
-      res.status(201).render("./account/management", {
-          title: "Management",
-          nav,
-      })
+      res.redirect("/inv/")
   } else{
+     //const data = await invModel.getInventoryByClassificationId(classification_id)
+     const classificationList = await utilities.buildClassificationList()
       req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("./account/newinv", {
-          title: "newinv",
+      res.status(501).render("./inv/newinv", {
+          title: "add inventory",
           nav,
-          dropdown,
+          classificationList,
           errors: null,
       })
   }
 }
 invCont.buildNewInv = async function (req, res, next){
-  const classification_id = req.params.classificationId
-  const data = await invModel.getInventoryByClassificationId(classification_id)
-  const dropdown = await utilities.getDropdownForm(data)
+  //const classification_id = req.params.classificationId
+  //const data = await invModel.getInventoryByClassificationId(classification_id)
+  const classificationList = await utilities.buildClassificationList()
   let nav = await utilities.getNav()
   res.render("./account/newinv", {
       title: "newinv",
       nav,
-      dropdown,
+      classificationList,
       errors: null,
   })
 }

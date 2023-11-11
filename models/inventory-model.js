@@ -54,9 +54,10 @@ async function registerNewInv(
     inv_thumbnail,
     inv_price,
     inv_miles,
-    inv_color,){
+    inv_color){
       try{
-          const sql = `INSERT INTO inventory (classification_id,
+          const sql = `INSERT INTO public.inventory (
+            classification_id,
             inv_make,
             inv_model,
             inv_year,
@@ -75,7 +76,7 @@ async function registerNewInv(
             inv_thumbnail,
             inv_price,
             inv_miles,
-            inv_color,])
+            inv_color])
       } catch (error){
           return error.message
       }

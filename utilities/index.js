@@ -54,8 +54,6 @@ Util.buildClassificationGrid = async function(data){
 Util.getDropdownForm = async function (req, res, next) {
   let data = await invModel.getClassifications();
   console.log(data);
-// Change the form action and method accordingly
-
   let dropdown = '<label for="classification_id">Choose a classification:</label>';
   dropdown += '<select id="classification_id" name="classification_id">';
 
@@ -72,6 +70,24 @@ Util.getDropdownForm = async function (req, res, next) {
 
   return dropdown;
 };
+Util.buildClassificationList = async function (classification_id = null){
+  let data = await invModel.getClassifications();
+  let classificationList =
+  '<select name="classification_id" id="classificationList">'
+  classificationList += "<option>Choose a Classification</option>"
+  data.rows.forEach((row) =>{
+    classificationList += '<option required value="' + row.classification_id + '"'
+    if(
+      classification_id != null && 
+      row.classification_id == classification_id
+      ){
+      classificationList += " selected "
+    }
+    classificationList += ">" + row.classification_name + "</option>"
+  })
+  classificationList += "</select>"
+  return classificationList
+}
 Util.buildLogin = async function() {
   return `
     <form id="classification-form">
