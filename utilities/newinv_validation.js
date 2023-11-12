@@ -81,7 +81,7 @@ validate.checkRegData = async(req,res,next)=>{
         const classificationList = await utilities.buildClassificationList(classification_id)
         res.render("./inventory/newinv",{
             errors,
-            title: "newinv",
+            title: "Add new inventory",
             nav,
             classificationList,
             classification_id,

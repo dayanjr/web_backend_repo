@@ -25,7 +25,7 @@ validate.checkRegData = async(req,res,next)=>{
         let nav = await utilities.getNav()
         res.render("./inventory/newclass",{
             errors,
-            title: "newclass",
+            title: "Add new class",
             nav,
             classification_name,
         })
