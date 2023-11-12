@@ -81,4 +81,15 @@ async function registerNewInv(
           return error.message
       }
   }
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id, registerNewClass, registerNewInv};
+  async function checkString(value){
+    try {
+      if (/^[A-Za-z]*$/.test(value)) {
+          return false;
+      } else {
+          return true;
+      }
+  } catch (error) {
+      return error.message;
+  }
+ } 
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id, registerNewClass, registerNewInv, checkString};

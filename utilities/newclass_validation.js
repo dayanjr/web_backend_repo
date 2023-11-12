@@ -1,14 +1,19 @@
 const utilities = require(".")
-const accountModel = require("../models/account-model")
+const invModel = require("../models/inventory-model")
 const{body, validationResult} = require("express-validator")
 const validate = {}
 validate.registationRules = () => {
     return[
         body("classification_name")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 5})
-        .withMessage("Please provide a classification name.") 
+            .isLength({min:1})
+            .withMessage("Please provide a classification name.")
+            .custom(async (classification_name)=>
+        {
+            const invalidType = await invModel.checkString(classification_name)
+            if (invalidType){
+                throw new Error("Wrong type input, it must be a string with no white-spaces")
+            }
+        }), 
     ]
 }
 validate.checkRegData = async(req,res,next)=>{
@@ -18,7 +23,7 @@ validate.checkRegData = async(req,res,next)=>{
     errors = validationResult(req)
     if(!errors.isEmpty()){
         let nav = await utilities.getNav()
-        res.render("./account/newclass",{
+        res.render("./inventory/newclass",{
             errors,
             title: "newclass",
             nav,

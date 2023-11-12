@@ -16,5 +16,5 @@ async function registerAccount(account_firstname, account_lastname,
     }catch(error){
         return error.message
     }
- }   
+ }     
 module.exports = {registerAccount, checkExistingEmail}

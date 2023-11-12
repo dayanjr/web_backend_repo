@@ -51,25 +51,6 @@ Util.buildClassificationGrid = async function(data){
 
   return `<ul id="inv-display">${gridItems.join('')}</ul>`;
 };
-Util.getDropdownForm = async function (req, res, next) {
-  let data = await invModel.getClassifications();
-  console.log(data);
-  let dropdown = '<label for="classification_id">Choose a classification:</label>';
-  dropdown += '<select id="classification_id" name="classification_id">';
-
-  data.rows.forEach((row) => {
-    dropdown +=
-      '<option value="' +
-      row.classification_id +
-      '">' +
-      row.classification_name +
-      '</option>';
-  });
-
-  dropdown += '</select>';
-
-  return dropdown;
-};
 Util.buildClassificationList = async function (classification_id = null){
   let data = await invModel.getClassifications();
   let classificationList =

@@ -17,39 +17,39 @@
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_make">Make:</label></div>
-          <div class="col-75"><input type="text" name="inv_make" id="inv_make" required value="<%= locals.inv_make%>"></div>
+          <div class="col-75"><input type="text" name="inv_make" id="inv_make" required pattern="^[A-Za-z]+$" value="<%= locals.inv_make%>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_model">Model:</label></div>
-          <div class="col-75"><input type="text" name="inv_model" id="inv_model" required value="<%= locals.inv_model%>"></div>
+          <div class="col-75"><input type="text" name="inv_model" id="inv_model" required pattern="^[A-Za-z]+$" value="<%= locals.inv_model%>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_description">Description:</label></div>
-          <div class="col-75"><textarea type="text" name="inv_description" id="inv_description" style="height:200px" placeholder="Write Description.." required value="<%= locals.inv_description%>"></textarea></div>
+          <div class="col-75"><textarea type="text" name="inv_description" id="inv_description" style="height:200px" placeholder="Write Description.." required ><%= locals.inv_description%></textarea></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_image">Image:</label></div>
-          <div class="col-75"><input type="text" name="inv_image" id="inv_image" required value="<%= locals.inv_image %>"></div>
+          <div class="col-75"><input type="text" name="inv_image" id="inv_image" placeholder="public\images\vehicles\no-image.png" value="<%= locals.inv_image %>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_thumbnail">Thumbnail:</label></div>
-          <div class="col-75"><input type="text" name="inv_thumbnail" id="inv_thumbnail" required value="<%= locals.inv_thumbnail %>"></div>
+          <div class="col-75"><input type="text" name="inv_thumbnail" id="inv_thumbnail" placeholder="public\images\vehicles\no-image-tn.png" required value="<%= locals.inv_thumbnail %>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_price">Price:</label></div>
-          <div class="col-75"><input type="text" name="inv_price" id="inv_price" required value="<%= locals.inv_price %>"></div>
+          <div class="col-75"><input type="text" name="inv_price" id="inv_price" pattern="^\d+$" required value="<%= locals.inv_price %>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_year">Year:</label></div>
-          <div class="col-75"><input type="text" name="inv_year" id="inv_year" required value="<%= locals.inv_year %>"></div>
+          <div class="col-75"><input type="text" name="inv_year" id="inv_year" required pattern="^\d{1,4}$" value="<%= locals.inv_year %>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_miles">Miles:</label></div>
-          <div class="col-75"><input type="text" name="inv_miles" id="inv_miles" required value="<%= locals.inv_miles %>"></div>
+          <div class="col-75"><input type="text" name="inv_miles" id="inv_miles" required pattern="^\d+$" value="<%= locals.inv_miles %>"></div>
         </div>  
         <div class="row">
           <div class="col-25"><label for="inv_color">Color:</label></div>
-          <div class="col-75"> <input type="text" name="inv_color" id="inv_color" required value="<%= locals.inv_color %>"></div>
+          <div class="col-75"> <input type="text" name="inv_color" id="inv_color" required pattern="^[A-Za-z]+$" value="<%= locals.inv_color %>"></div>
         </div>  
         <div class="row">
           <input type="submit" value="Register">

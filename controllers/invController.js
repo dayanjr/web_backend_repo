@@ -32,14 +32,14 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 invCont.buildManagement = async function (req, res, next){
   let nav = await utilities.getNav()
-  res.render("./account/management", {
+  res.render("./inventory/management", {
       title: "Management",
       nav,
   })
 }
 invCont.buildNewClass = async function (req, res, next){
   let nav = await utilities.getNav()
-  res.render("./account/newclass", {
+  res.render("./inventory/newclass", {
       title: "newclass",
       nav,
       errors: null,
@@ -58,13 +58,13 @@ invCont.buildNewClass = async function (req, res, next){
           "notice",
           `Congratilations, you\'re registered ${classification_name}. Please log in.`
       )
-      res.status(201).render("./account/management", {
+      res.status(201).render("./inventory/management", {
           title: "Management",
           nav,
       })
   } else{
       req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("./account/newclass", {
+      res.status(501).render("./inventory/newclass", {
           title: "newclass",
           nav,
           errors: null,
@@ -118,11 +118,9 @@ invCont.buildNewClass = async function (req, res, next){
   }
 }
 invCont.buildNewInv = async function (req, res, next){
-  //const classification_id = req.params.classificationId
-  //const data = await invModel.getInventoryByClassificationId(classification_id)
   const classificationList = await utilities.buildClassificationList()
   let nav = await utilities.getNav()
-  res.render("./account/newinv", {
+  res.render("./inventory/newinv", {
       title: "newinv",
       nav,
       classificationList,

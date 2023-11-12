@@ -1,59 +1,65 @@
 const utilities = require(".")
-const accountModel = require("../models/account-model")
+const invModel = require("../models/inventory-model")
 const{body, validationResult} = require("express-validator")
 const validate = {}
 validate.registationRules = () => {
     return[
         body("classification_id")
-        .trim()
-        .isString()
         .isLength({min:1})
-        .withMessage("Please provide a classification name."), 
+        .withMessage("Please provide a classification name."),
         body("inv_make")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isLength({min:1})
+        .withMessage("Please provide a make for the car.")
+        .custom(async (inv_make)=>
+        {
+            const invalidType = await invModel.checkString(inv_make)
+            if (invalidType){
+                throw new Error("Wrong type input, it must be a string with no white-spaces")
+            }
+        }), 
         body("inv_model")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isLength({min:1})
+        .withMessage("Please provide a model for the car.")
+        .custom(async (inv_model)=>
+        {
+            const invalidType = await invModel.checkString(inv_model)
+            if (invalidType){
+                throw new Error("Wrong type input, it must be a string with no white-spaces")
+            }
+        }), 
         body("inv_year")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isNumeric()
+        .isLength({min:1 ,max: 4})
+        .withMessage("Please provide a valid year number for the car."), 
         body("inv_description")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isLength({min:1})
+        .withMessage("Please provide a description for the car."), 
         body("inv_image")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isLength({min:1})
+        .withMessage("Please provide an image url."), 
         body("inv_thumbnail")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isLength({min:1})
+        .withMessage("Please provide a thumbnail image url."), 
         body("inv_price")
         .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isInt()
+        .isLength({min:1})
+        .withMessage("Please provide a price for the car."), 
         body("inv_miles")
         .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name."), 
+        .isNumeric()
+        .isLength({min:1})
+        .withMessage("Please provide a mile number for the car."), 
         body("inv_color")
-        .trim()
-        .isString()
-        .isLength({min:1 ,max: 3})
-        .withMessage("Please provide a classification name.") 
+        .isLength({min:1})
+        .withMessage("Please provide a color name.")
+        .custom(async (inv_color)=>
+        {
+            const invalidType = await invModel.checkString(inv_color)
+            if (invalidType){
+                throw new Error("Wrong type input, it must be a string with no white-spaces")
+            }
+        }) 
     ]
 }
 validate.checkRegData = async(req,res,next)=>{
@@ -73,7 +79,7 @@ validate.checkRegData = async(req,res,next)=>{
     if(!errors.isEmpty()){
         let nav = await utilities.getNav()
         const classificationList = await utilities.buildClassificationList(classification_id)
-        res.render("./account/newinv",{
+        res.render("./inventory/newinv",{
             errors,
             title: "newinv",
             nav,
