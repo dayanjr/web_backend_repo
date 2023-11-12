@@ -3,7 +3,7 @@
         background-image: none;
        }
        nav{
-        width: 338px;
+        width: 409px;
         margin-left: -25px;
        }
        #inv-display{
@@ -71,7 +71,8 @@
         color: white;
         background-color: black;
         padding: 15px;
-        font-size: 14px;
+        font-size: 11px;
+        gap: 9px;
         list-style-type: none;
     }
     #displayer{
