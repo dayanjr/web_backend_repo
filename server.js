@@ -16,6 +16,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const Util = require("./utilities")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 //const cookieParser = require("cookie-parser")
 /* ***********************
  *View Engine and Templates
@@ -23,8 +24,7 @@ const bodyParser = require("body-parser")
  /* ***********************
  * Middleware
  * ************************/
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+
  app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
@@ -41,6 +41,10 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cookieParser())
+app.use(Util.checkJWTToken)
  app.set("view engine", "ejs")
  app.use(expressLayouts)
  app.set("layout", "./layouts/layout") // not at views root
