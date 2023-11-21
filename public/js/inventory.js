@@ -1,4 +1,6 @@
-"use strict"
+
+'use strict' 
+ 
  // Get a list of items in inventory based on the classification_id 
  let classificationList = document.querySelector("#classificationList")
  classificationList.addEventListener("change", function () { 
@@ -18,7 +20,6 @@
   }) 
   .catch(function (error) { 
    console.log('There was a problem: ', error.message) 
-   throw Error('Fetch of JSON data failed')
   }) 
  })
  // Build inventory items into HTML table components and inject into DOM 
