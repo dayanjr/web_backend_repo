@@ -70,7 +70,7 @@ async function accountLogin(req, res){
     const accountData = await accountModel.getAccountByEmail(account_email)
     if(!accountData){
         req.flash("notice","Please check your credentials and try again.")
-        res.status(400).render("account/login",{
+        res.status(200).render("account/login",{
             title:"Login",
             nav,
             errors:null,
@@ -89,4 +89,11 @@ async function accountLogin(req, res){
         return new Error('Access Forbidden')
     }
 }
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin}
+async function buildManagement(req, res, next){
+    let nav = await utilities.getNav()
+    res.render("./inventory/management", {
+        title: "Management",
+        nav,
+    })
+  }
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildManagement}

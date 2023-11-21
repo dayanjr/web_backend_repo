@@ -2,11 +2,11 @@
     <h1><%= title %></h1>
     <%- messages() %>
     <form id="login-form" action="/account/login" method="post">
-        <label for="Email">Email:</label>
-        <input type="text" name="Email" id="Email" required>
+        <label for="email">Email:</label>
+        <input type="text" name="account_email" id="email" required>
   
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
+        <input type="password" name="account_password" id="password" required>
   
         <button type="submit">Log In</button>
       </form>

@@ -13,4 +13,8 @@ router.get("/newinv", utilities.handleErrors(invController.buildNewInv))
 router.post("/newinv",NewInvValidate.registationRules(),NewInvValidate.checkRegData,utilities.handleErrors(invController.registerNewInv))
 router.get("/newclass", utilities.handleErrors(invController.buildNewClass))
 router.post("/newclass",NewClassValidate.registationRules(),NewClassValidate.checkRegData,utilities.handleErrors(invController.registerNewClass))
+router.get("/getInventory/:classification_id", 
+//utilities.checkAccountType,
+utilities.handleErrors(invController.getInventoryJSON))
+//router.get("/edit/#",utilities.handleErrors(invController.editInventoryView))
 module.exports = router;
