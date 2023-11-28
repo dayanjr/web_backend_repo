@@ -14,4 +14,9 @@ router.post("/newinv",NewInvValidate.registationRules(),NewInvValidate.checkRegD
 router.get("/newclass", utilities.handleErrors(invController.buildNewClass))
 router.post("/newclass",NewClassValidate.registationRules(),NewClassValidate.checkRegData,utilities.handleErrors(invController.registerNewClass))
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
+router.post("/update/", invController.updateInventory)
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView))
+router.post("/delete", utilities.handleErrors(invController.deleteItem))
+
 module.exports = router;

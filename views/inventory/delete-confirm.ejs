@@ -1,0 +1,38 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <%- messages() %>
+    <% if (errors) {%>
+    <ul class="notice">
+      <% errors.array().forEach(error => {%>
+      <li><%= error.msg %></li>
+    <% }) %>
+    </ul>
+    <% } %>
+      <div id="registerContainer">
+        <p>Confirm Deletion - The delete is permanent.</p>
+        <form id="resgisterForm" action="/inv/delete" method="post">  
+          <div class="row">
+            <div class="col-25"><label for="inv_make">Make:</label></div>
+            <div class="col-75"><input type="text" name="inv_make" id="inv_make" placeholder="insert car Make(exemple: Chevy)" required pattern="^[A-Za-z]+$" value="<%= locals.inv_make%>"></div>
+          </div>  
+          <div class="row">
+            <div class="col-25"><label for="inv_model">Model:</label></div>
+            <div class="col-75"><input type="text" name="inv_model" id="inv_model" placeholder="insert car Model(exemple: Camaro)" required pattern="^[A-Za-z]+$" value="<%= locals.inv_model%>"></div>
+          </div>  
+          <div class="row">
+            <div class="col-25"><label for="inv_price">Price:</label></div>
+            <div class="col-75"><input type="text" name="inv_price" id="inv_price" pattern="^\d+$" placeholder="It must be a numerical value(exemple: 200)." required value="<%= locals.inv_price %>"></div>
+          </div>  
+          <div class="row">
+            <div class="col-25"><label for="inv_year">Year:</label></div>
+            <div class="col-75"><input type="text" name="inv_year" id="inv_year" required pattern="^\d{1,4}$" placeholder="It must be an integer and it must have 4 digits or less(exemple: 1800)." value="<%= locals.inv_year %>"></div>
+          </div>   
+          <div class="row">
+            <input type="hidden" name="inv_id" <% if(locals.inv_id) { %>value="<%= locals.inv_id %>"<%}%>>
+            <button type="submit">Delete Vehicle</button>
+          </div>  
+        </form>
+      </div>
+    <% } else {
+        res.redirect('/')
+    } %>
