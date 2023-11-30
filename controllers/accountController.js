@@ -12,17 +12,9 @@ async function buildLogin(req, res, next){
 }
 module.exports = { buildLogin}
 async function logoutFunct(req, res, next){
-    const destroyer = await utilities.destroyCookie()
-    let nav = await utilities.getNav()
-    if(destroyer){res.render("account/login", {
-        title: "Login",
-        nav,
-    })}else{
-        res.render("account/login", {
-            title: "Login",
-            nav,
-        })
-    }
+   res.clearCookie("jwt")
+   res.redirect("/")
+   return
 }
 module.exports = { buildLogin , logoutFunct}
 async function buildRegister(req, res, next){
@@ -33,7 +25,7 @@ async function buildRegister(req, res, next){
         errors: null,
     })
 }
-module.exports = {buildLogin, buildRegister}
+module.exports = {buildLogin, buildRegister, logoutFunct}
 async function registerAccount(req, res){
     let nav = await utilities.getNav()
     const{
@@ -113,4 +105,4 @@ async function buildManagement(req, res, next){
         classificationSelect,
     })
   }
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildManagement}
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, logoutFunct}
