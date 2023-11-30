@@ -153,6 +153,10 @@ Util.checkJWTToken = (req,res,next)=>{
     next()
   }
 }
+Util.destroyCookie = (req,res,next)=>{
+  res.clearCookie("jwt")
+  next()
+}
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next()

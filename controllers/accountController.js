@@ -10,7 +10,21 @@ async function buildLogin(req, res, next){
         nav,
     })
 }
-module.exports = { buildLogin }
+module.exports = { buildLogin}
+async function logoutFunct(req, res, next){
+    const destroyer = await utilities.destroyCookie()
+    let nav = await utilities.getNav()
+    if(destroyer){res.render("account/login", {
+        title: "Login",
+        nav,
+    })}else{
+        res.render("account/login", {
+            title: "Login",
+            nav,
+        })
+    }
+}
+module.exports = { buildLogin , logoutFunct}
 async function buildRegister(req, res, next){
     let nav= await utilities.getNav()
     res.render("account/register",{

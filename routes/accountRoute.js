@@ -10,6 +10,7 @@ router.post("/login",
 //regValidate.checkLogindata,
 utilities.handleErrors(accountController.accountLogin)
 )
+router.post("/logout", utilities.handleErrors(accountController.logoutFunct))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.post("/register", regValidate.registationRules(), regValidate.checkRegData,
 utilities.handleErrors(accountController.registerAccount))
