@@ -1,18 +1,22 @@
 <% if (title) { %>
     <h1><%= title %></h1>
     <%- messages() %>
-    <div class="tools">
-      <a class="top-links" title="Click to log in" href="/inv/newclass">add new classification</a>
-    </div>
-    <div class="tools">
-      <a class="top-links" title="Click to log in" href="/inv/newinv">add new inventory</a>
-    </div>
-    <h2>Manage Inventory</h2>
-    <p>Choose a classification to see those inventory items.</p>
-    <%-classificationSelect%>
-    <table id="inventoryDisplay"></table>
-    <noscript>JavaScript must be enabled to use this page.</noscript>
-    <script src="../../js/inventory.js"></script>
+    <% if (locals.accountData.account_type == "Admin") { %>
+      <div class="tools">
+        <a class="top-links" title="Click to log in" href="/inv/newclass">add new classification</a>
+      </div>
+      <div class="tools">
+        <a class="top-links" title="Click to log in" href="/inv/newinv">add new inventory</a>
+      </div>
+      <h2>Manage Inventory</h2>
+      <p>Choose a classification to see those inventory items.</p>
+      <%-classificationSelect%>
+      <table id="inventoryDisplay"></table>
+      <noscript>JavaScript must be enabled to use this page.</noscript>
+      <script src="../../js/inventory.js"></script>
+    <% } else { %>
+      <h1>not admin or employee</h1>
+    <% } %>
     <% } else {
         res.redirect('/')
     } %>
