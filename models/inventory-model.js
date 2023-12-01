@@ -36,6 +36,17 @@ async function getInventoryByInv_Id(inv_id) {
     console.error("getclassificationsbyid error " + error)
   }
 }
+async function getAccountByAccount_Id(account_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.account AS i WHERE i.account_id = $1;`,
+      [account_id]
+    )
+    return data.rows
+  } catch (error) {
+    console.error("getaccountbyid error " + error)
+  }
+}
 async function registerNewClass(classification_name){
       try{
           const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
@@ -129,6 +140,30 @@ async function updateInventory(
     console.error("model error: " + error)
   }
 }
+async function updateAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_password,
+    account_type,
+    account_id,
+) {
+  try {
+    const sql =
+      "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3, account_password = $4, account_type = $5 WHERE account_id = $6 RETURNING *"
+    const data = await pool.query(sql, [
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_password,
+    account_type,
+    account_id,
+    ])
+    return data.rows[0]
+  } catch (error) {
+    console.error("model error: " + error)
+  }
+}
 async function deleteInventoryItem(inv_id) {
   try {
     const sql = 'DELETE FROM inventory WHERE inv_id = $1'
@@ -138,4 +173,4 @@ async function deleteInventoryItem(inv_id) {
     new Error("Delete Inventory Error")
   }
 }
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id, registerNewClass, registerNewInv, checkString, updateInventory, deleteInventoryItem};
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInv_Id, registerNewClass, registerNewInv, checkString, updateInventory, deleteInventoryItem, updateAccount, getAccountByAccount_Id};

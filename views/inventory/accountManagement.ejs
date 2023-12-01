@@ -1,0 +1,18 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <%- messages() %>
+    <% if (locals.accountData.account_type == "Admin" || locals.accountData.account_type == "Employee") { %>
+      <div class="tools">
+        <a class="top-links" title="Click to log in" href="/inv/editaccount/<%=locals.accountData.account_id%>">update account</a>
+      </div>
+      <div class="tools">
+        <a class="top-links" title="Click to log in" href="/inv/management">inventory management</a>
+      </div>
+    <% } else { %>
+        <div class="tools">
+            <a class="top-links" title="Click to log in" href="/inv/editaccount/<%=locals.accountData.account_id%>">update account</a>
+          </div>
+    <% } %>
+    <% } else {
+        res.redirect('/')
+    } %>

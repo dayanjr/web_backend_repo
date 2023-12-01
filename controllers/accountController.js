@@ -105,4 +105,13 @@ async function buildManagement(req, res, next){
         classificationSelect,
     })
   }
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, logoutFunct}
+async function buildAccountManagement(req, res, next){
+    let nav = await utilities.getNav()
+    //const classificationSelect = await utilities.buildClassificationList()
+    res.render("./inventory/accountManagement", {
+        title: "Account Management",
+        nav,
+        errors: null,
+    })
+  }
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, logoutFunct, buildAccountManagement}

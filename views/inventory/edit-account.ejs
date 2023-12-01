@@ -1,0 +1,43 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <%- messages() %>
+    <% if (errors) {%>
+    <ul class="notice">
+      <% errors.array().forEach(error => {%>
+      <li><%= error.msg %></li>
+    <% }) %>
+    </ul>
+    <% } %>
+      <div id="registerContainer">
+        <form id="resgisterForm" action="/inv/updateaccount/" method="post">
+            <div class="row">
+                <div class="col-25"><label for="account_firstname">First Name:</label></div>
+                <div class="col-75"><input type="text" name="account_firstname" id="account_firstname" value="<%= locals.account_firstname %>"></div>
+              </div>   
+            <div class="row">
+                <div class="col-25"><label for="account_lastname">Last Name:</label></div>
+                <div class="col-75"><input type="text" name="account_lastname" id="account_lastname" value="<%= locals.account_lastname %>"></div>
+              </div>   
+            <div class="row">
+                <div class="col-25"><label for="account_email">Email:</label></div>
+                <div class="col-75"><input type="text" name="account_email" id="account_email" value="<%= locals.account_email %>"></div>
+              </div>   
+            <div class="row">
+                <div class="col-25"><label for="account_password">Password:</label></div>
+                <div class="col-75"><input type="text" name="account_password" id="account_password" value="<%= locals.account_password %>"></div>
+              </div>   
+          <div class="row">
+            <div class="row">
+                <div class="col-25"><label for="account_type">Account Type:</label></div>
+                <div class="col-75"><input type="text" name="account_type" id="account_type" value="<%= locals.account_type %>"></div>
+              </div>   
+          <div class="row">
+            <input type="hidden" name="account_id" <% if(locals.account_id) { %>value="<%= locals.account_id %>"<%}%>>
+            <button disabled type="submit">Update Account</button>
+          </div>  
+        </form>
+      </div>
+      <script src="../../js/inv-update.js"></script>
+    <% } else {
+        res.redirect('/')
+    } %>

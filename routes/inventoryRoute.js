@@ -8,7 +8,7 @@ const NewInvValidate = require("../utilities/newinv_validation")
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInventoryId));
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/", utilities.checkLogin, utilities.handleErrors(invController.buildManagement));
 router.get("/newinv", utilities.handleErrors(invController.buildNewInv))
 router.post("/newinv",NewInvValidate.registationRules(),NewInvValidate.checkRegData,utilities.handleErrors(invController.registerNewInv))
 router.get("/newclass", utilities.handleErrors(invController.buildNewClass))
@@ -18,5 +18,7 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryVi
 router.post("/update/", invController.updateInventory)
 router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView))
 router.post("/delete", utilities.handleErrors(invController.deleteItem))
+router.get("/editaccount/:account_id", utilities.handleErrors(invController.editAccountView))
+router.post("/updateaccount/", invController.updateAccount)
 
 module.exports = router;
