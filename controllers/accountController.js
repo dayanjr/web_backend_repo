@@ -141,10 +141,9 @@ async function buildAccountManagement(req, res, next){
       account_type,
       account_password,
       account_id,
-  
     } = req.body
-    const itemData = await accountModel.getAccountByEmail(account_email)
-    const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
+    //const itemData = await accountModel.getAccountByEmail(account_email)
+    //const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
     let hashedPassword 
     try{
         hashedPassword = await bcrypt.hashSync(account_password, 10)
@@ -154,7 +153,7 @@ async function buildAccountManagement(req, res, next){
             "Sorry, there was an error processing the registration."
         )
         res.status(500).render("account/edit-account", {
-            title: "Edit " + itemName,
+            title: "Edit " + account_firstname,
             nav,
         })
     }
