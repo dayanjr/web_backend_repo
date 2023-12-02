@@ -109,7 +109,7 @@ async function buildAccountManagement(req, res, next){
     let nav = await utilities.getNav()
     //const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
     //const classificationSelect = await utilities.buildClassificationList()
-    res.render("./inventory/accountManagement", {
+    res.render("./account/accountManagement", {
         title: "Account Management",
         nav,
         errors: null,
@@ -120,7 +120,7 @@ async function buildAccountManagement(req, res, next){
     let nav = await utilities.getNav()
     const itemData = await accountModel.getAccountByAccount_Id(account_id)
     const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
-    res.render("./inventory/edit-account", {
+    res.render("./account/edit-account", {
       title: "Edit " + itemName,
       nav,
       errors: null,
@@ -143,19 +143,21 @@ async function buildAccountManagement(req, res, next){
       account_id,
   
     } = req.body
+    const itemData = await accountModel.getAccountByEmail(account_email)
+    const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
     let hashedPassword 
     try{
         hashedPassword = await bcrypt.hashSync(account_password, 10)
     } catch(error) {
+        
         req.flash("notice",
             "Sorry, there was an error processing the registration."
         )
-        res.status(500).render("account/register", {
-            title: "Registration",
+        res.status(500).render("account/edit-account", {
+            title: "Edit " + itemName,
             nav,
         })
     }
-    const itemData = await accountModel.getAccountByEmail(account_email)
     const reqResult = await accountModel.updateAccount(
       account_firstname,
       account_lastname,
@@ -167,20 +169,16 @@ async function buildAccountManagement(req, res, next){
     if (reqResult){
         req.flash(
             "notice",
-            `Congratilations, you\'ve registered new inventory.` 
+            `Congratilations, you\'ve successfully update your account.` 
         )
-        //delete accountData.account_password
         res.clearCookie("jwt")
         const accessToken = jwt.sign(itemData, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 3600 * 1000})
         res.cookie("jwt", accessToken, {httpOnly: true, maxAge: 3600 * 1000})
         return res.redirect("/account/")
-        //res.redirect("/account/")
     } else{
-       //const data = await invModel.getInventoryByClassificationId(classification_id)
-       //const classificationList = await utilities.buildClassificationList()
         req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("./inventory/accountManagement", {
-            title: "Account management",
+        res.status(501).render("./account/accountManagement", {
+            title: "Account Management",
             nav,
             errors: null,
         })
@@ -192,6 +190,8 @@ async function buildAccountManagement(req, res, next){
       account_password,
       account_id,
     } = req.body
+    const itemData = await accountModel.getAccountByAccount_Id(account_id)
+    const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
     let hashedPassword 
     try{
         hashedPassword = await bcrypt.hashSync(account_password, 10)
@@ -199,12 +199,12 @@ async function buildAccountManagement(req, res, next){
         req.flash("notice",
             "Sorry, there was an error on updating."
         )
-        res.status(500).render("account/register", {
-            title: "Registration",
+        res.status(500).render("account/edit-account", {
+            title: "Edit " + itemName,
             nav,
         })
     }
-    const itemData = await accountModel.getAccountByAccount_Id(account_id)
+    //const itemData = await accountModel.getAccountByAccount_Id(account_id)
     const reqResult = await accountModel.updatePassword(
       hashedPassword,
       account_id,
@@ -224,8 +224,8 @@ async function buildAccountManagement(req, res, next){
        //const data = await invModel.getInventoryByClassificationId(classification_id)
        //const classificationList = await utilities.buildClassificationList()
         req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("./inventory/accountManagement", {
-            title: "Account management",
+        res.status(501).render("./account/accountManagement", {
+            title: "Account Management",
             nav,
             errors: null,
         })
