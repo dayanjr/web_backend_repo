@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const jwt = require("jsonwebtoken")
 
 const invCont = {}
 /* ***************************
@@ -248,60 +249,6 @@ invCont.deleteItem = async function (req, res, next) {
   } else {
     req.flash("notice", "Sorry, the delete failed.")  
     res.redirect("/inv/delete/" + inv_id)
-  }
-}
-invCont.editAccountView = async function (req, res, next) {
-  const account_id = parseInt(req.params.account_id)
-  let nav = await utilities.getNav()
-  const itemData = await invModel.getAccountByAccount_Id(account_id)
-  const itemName = `${itemData[0].account_firstname} ${itemData[0].account_lastname}`
-  res.render("./inventory/edit-account", {
-    title: "Edit " + itemName,
-    nav,
-    errors: null,
-    account_id: itemData[0].account_id,
-    account_firstname: itemData[0].account_firstname,
-    account_lastname: itemData[0].account_lastname,
-    account_email: itemData[0].account_email,
-    account_password: itemData[0].account_password,
-    account_type: itemData[0].account_type,
-
-  })
-}
-invCont.updateAccount = async function (req, res, next){
-  let nav = await utilities.getNav()
-  const{
-    account_firstname,
-    account_lastname,
-    account_email,
-    account_password,
-    account_type,
-    account_id,
-
-  } = req.body
-  const reqResult = await invModel.updateAccount(
-    account_firstname,
-    account_lastname,
-    account_email,
-    account_password,
-    account_type,
-    account_id,
-  )
-  if (reqResult){
-      req.flash(
-          "notice",
-          `Congratilations, you\'ve registered new inventory.`
-      )
-      res.redirect("/account/")
-  } else{
-     //const data = await invModel.getInventoryByClassificationId(classification_id)
-     //const classificationList = await utilities.buildClassificationList()
-      req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("./inventory/accountManagement", {
-          title: "Account management",
-          nav,
-          errors: null,
-      })
   }
 }
 module.exports = invCont

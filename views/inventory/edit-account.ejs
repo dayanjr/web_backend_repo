@@ -9,7 +9,7 @@
     </ul>
     <% } %>
       <div id="registerContainer">
-        <form id="resgisterForm" action="/inv/updateaccount/" method="post">
+        <form id="resgisterForm" action="/account/updateaccount/" method="post">
             <div class="row">
                 <div class="col-25"><label for="account_firstname">First Name:</label></div>
                 <div class="col-75"><input type="text" name="account_firstname" id="account_firstname" value="<%= locals.account_firstname %>"></div>
@@ -21,11 +21,7 @@
             <div class="row">
                 <div class="col-25"><label for="account_email">Email:</label></div>
                 <div class="col-75"><input type="text" name="account_email" id="account_email" value="<%= locals.account_email %>"></div>
-              </div>   
-            <div class="row">
-                <div class="col-25"><label for="account_password">Password:</label></div>
-                <div class="col-75"><input type="text" name="account_password" id="account_password" value="<%= locals.account_password %>"></div>
-              </div>   
+              </div>      
           <div class="row">
             <div class="row">
                 <div class="col-25"><label for="account_type">Account Type:</label></div>
@@ -34,6 +30,17 @@
           <div class="row">
             <input type="hidden" name="account_id" <% if(locals.account_id) { %>value="<%= locals.account_id %>"<%}%>>
             <button disabled type="submit">Update Account</button>
+          </div>  
+        </form>
+      </div>
+      <div id="secondRegisterContainer">
+        <form id="secondResgisterForm" action="/account/updatepassword/" method="post">
+          <label for="account_password">Password:</label>
+          <input type="password" name="account_password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+          <div><i>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</i></div>  
+          <div class="row">
+            <input type="hidden" name="account_id" <% if(locals.account_id) { %>value="<%= locals.account_id %>"<%}%>>
+            <button type="submit">Change Password</button>
           </div>  
         </form>
       </div>

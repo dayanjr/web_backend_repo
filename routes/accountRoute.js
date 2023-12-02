@@ -15,4 +15,7 @@ utilities.handleErrors(accountController.accountLogin)
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.post("/register", regValidate.registationRules(), regValidate.checkRegData,
 utilities.handleErrors(accountController.registerAccount))
+router.get("/editaccount/:account_id", utilities.handleErrors(accountController.editAccountView))
+router.post("/updateaccount/", accountController.updateAccount)
+router.post("/updatepassword/", accountController.updatePassword)
 module.exports = router

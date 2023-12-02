@@ -165,5 +165,13 @@ Util.checkLogin = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.accountData.account_type == "Admin" || res.locals.accountData.account_type == "Admin" ) {
+    next()
+  } else {
+    req.flash("notice", "Sorry you must have an Admin or Employee account type to have access.")
+    return res.redirect("/account/login")
+  }
+ }
 module.exports = Util
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
