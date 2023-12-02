@@ -166,7 +166,7 @@ Util.checkLogin = (req, res, next) => {
   }
  }
 Util.checkAccountType = (req, res, next) => {
-  if (res.locals.accountData.account_type == "Admin" || res.locals.accountData.account_type == "Admin" ) {
+  if (res.locals.accountData.account_type == "Admin" || res.locals.accountData.account_type == "Employee" ) {
     next()
   } else {
     req.flash("notice", "Sorry you must have an Admin or Employee account type to have access.")
