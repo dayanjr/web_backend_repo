@@ -44,7 +44,6 @@ async function registerAccount(account_firstname, account_lastname,
     account_lastname,
     account_email,
     account_type,
-    //account_password,
     account_id,
   ) {
   try {
@@ -55,7 +54,6 @@ async function registerAccount(account_firstname, account_lastname,
     account_lastname,
     account_email,
     account_type,
-    //account_password,
     account_id,
     ])
     return data.rows[0]
