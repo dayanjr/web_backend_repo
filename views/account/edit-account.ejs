@@ -22,11 +22,7 @@
                 <div class="col-25"><label for="account_email">Email:</label></div>
                 <div class="col-75"><input type="text" name="account_email" id="account_email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" value="<%= locals.account_email %>"></div>
               </div>      
-          <div class="row">
-            <div class="row">
-                <div class="col-25"><label for="account_type">Account Type:</label></div>
-                <div class="col-75"><input type="text" name="account_type" id="account_type" required pattern="^[A-Za-z]+$" value="<%= locals.account_type %>"></div>
-              </div>   
+            
           <div class="row">
             <input type="hidden" name="account_id" <% if(locals.account_id) { %>value="<%= locals.account_id %>"<%}%>>
             <button disabled type="submit">Update Account</button>

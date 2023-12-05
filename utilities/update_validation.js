@@ -19,15 +19,10 @@ validate.updateRules = () => {
         .isEmail()
         .normalizeEmail()
         .withMessage("A valid email is required."),
-        body("account_type")
-        .trim()
-        .isString()
-        .isLength({min: 1})
-        .withMessage("Please provide a type."),
     ]
 }
 validate.checkUpData = async(req,res,next)=>{
-    const{account_firstname, account_lastname, account_email, account_type,}=
+    const{account_firstname, account_lastname, account_email}=
     req.body
     let errors = []
     errors = validationResult(req)
@@ -41,7 +36,6 @@ validate.checkUpData = async(req,res,next)=>{
             account_firstname,
             account_lastname,
             account_email,
-            account_type,
         })
         return
     }

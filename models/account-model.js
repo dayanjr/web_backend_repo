@@ -43,17 +43,15 @@ async function registerAccount(account_firstname, account_lastname,
     account_firstname,
     account_lastname,
     account_email,
-    account_type,
     account_id,
   ) {
   try {
     const sql =
-      "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3, account_type = $4 WHERE account_id = $5 RETURNING *"
+      "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3, WHERE account_id = $4 RETURNING *"
     const data = await pool.query(sql, [
     account_firstname,
     account_lastname,
     account_email,
-    account_type,
     account_id,
     ])
     return data.rows[0]
