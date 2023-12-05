@@ -3,14 +3,14 @@
     <%- messages() %>
     <% if ( locals.accountData.account_type == "Admin" || locals.accountData.account_type == "Employee") { %>
       <div class="tools">
-        <a class="top-links" title="Click to log in" href="/account/editaccount/<%=locals.accountData.account_id%>">update account</a>
+        <a class="top-links" title="Click to update account" href="/account/editaccount/<%=locals.accountData.account_id%>">update account</a>
       </div>
       <div class="tools">
-        <a class="top-links" title="Click to log in" href="/inv/">inventory management</a>
+        <a class="top-links" title="Click to manage inventory" href="/inv/">inventory management</a>
       </div>
     <% } else { %>
         <div class="tools">
-            <a class="top-links" title="Click to log in" href="/account/editaccount/<%=locals.accountData.account_id%>">update account</a>
+            <a class="top-links" title="Click to update account" href="/account/editaccount/<%=locals.accountData.account_id%>">update account</a>
           </div>
     <% } %>
     <% } else {
