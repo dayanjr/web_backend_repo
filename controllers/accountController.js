@@ -163,7 +163,7 @@ async function buildAccountManagement(req, res, next){
         const accessToken = jwt.sign({ account_firstname:account_firstname,
             account_lastname:account_lastname,
             account_email:account_email,
-            account_type:account_type,
+            account_type:itemData[0].account_type,
             account_id:account_id,},process.env.ACCESS_TOKEN_SECRET, {expiresIn: 3600 * 1000})
         res.cookie("jwt", accessToken, {httpOnly: true, maxAge: 3600 * 1000})
         return res.redirect("/account/")
