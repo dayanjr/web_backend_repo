@@ -3,7 +3,7 @@
     <%- messages() %>
     <form id="login-form" action="/account/login" method="post">
         <label for="email">Email:</label>
-        <input type="text" name="account_email" id="email" required>
+        <input type="text" name="account_email" id="email" required value="<%= locals.account_email %>">
   
         <label for="password">Password:</label>
         <input type="password" name="account_password" id="password" required>
