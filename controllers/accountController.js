@@ -139,7 +139,7 @@ async function buildAccountManagement(req, res, next){
       account_type,
       account_id,
     } = req.body
-    const itemData = await accountModel.getAccountByEmail(account_email)
+    const itemData = await accountModel.getAccountByAccount_Id(account_id)
     const reqResult = await accountModel.updateAccount(
       account_firstname,
       account_lastname,
@@ -148,12 +148,16 @@ async function buildAccountManagement(req, res, next){
       account_id,
     )
     if (reqResult){
-        res.clearCookie("jwt")
         req.flash(
             "notice",
             `Congratilations, you\'ve successfully updated your account.` 
         )
-        const accessToken = jwt.sign(itemData, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 3600 * 1000})
+        res.clearCookie("jwt")
+        const accessToken = jwt.sign({ account_firstname:account_firstname,
+            account_lastname:account_lastname,
+            account_email:account_email,
+            account_type:account_type,
+            account_id:account_id,},process.env.ACCESS_TOKEN_SECRET, {expiresIn: 3600 * 1000})
         res.cookie("jwt", accessToken, {httpOnly: true, maxAge: 3600 * 1000})
         return res.redirect("/account/")
     } else{

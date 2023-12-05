@@ -2,20 +2,19 @@ const express = require("express")
 const router = new express.Router()
 const accountController = require("../controllers/accountController")
 const regValidate = require("../utilities/account_validation")
+const upValidate = require("../utilities/update_validation")
+const upPassword = require("../utilities/newPasswordVal")
 const utilities = require("../utilities")
-//router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 router.get("/logout", utilities.handleErrors(accountController.logoutFunct))
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.post("/login",
-//regValidate.loginRules(),
-//regValidate.checkLogindata,
 utilities.handleErrors(accountController.accountLogin)
 )
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.post("/register", regValidate.registationRules(), regValidate.checkRegData,
 utilities.handleErrors(accountController.registerAccount))
 router.get("/editaccount/:account_id", utilities.handleErrors(accountController.editAccountView))
-router.post("/updateaccount/", accountController.updateAccount)
-router.post("/updatepassword/", accountController.updatePassword)
+router.post("/updateaccount/", upValidate.updateRules(), upValidate.checkUpData,utilities.handleErrors(accountController.updateAccount))
+router.post("/updatepassword/", upPassword.updatePassword(),  upPassword.checkPasswordData,utilities.handleErrors(accountController.updatePassword))
 module.exports = router
