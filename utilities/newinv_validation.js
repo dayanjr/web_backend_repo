@@ -19,14 +19,7 @@ validate.registationRules = () => {
         }), 
         body("inv_model")
         .isLength({min:1})
-        .withMessage("Please provide a model for the car.")
-        .custom(async (inv_model)=>
-        {
-            const invalidType = await invModel.checkString(inv_model)
-            if (invalidType){
-                throw new Error("Wrong type input, it must be a string with no white-spaces")
-            }
-        }), 
+        .withMessage("Please provide a model for the car."), 
         body("inv_year")
         .isNumeric()
         .isLength({min:1 ,max: 4})
